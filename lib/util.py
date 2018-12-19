@@ -107,3 +107,31 @@ def GetFilename(filename):
 		return ret
 	except:
 		pass
+
+def GetEpisodeNumFromTitle(title):
+
+    ret={}
+
+    ret['title']=title
+    ret['season']='0'
+
+    p = re.search(u"시즌[0-9]+", title)
+    if p:
+        ret['title']=re.sub('[0-9]+'+u"[회|화|부]","", ret['title']).strip()
+
+        season=re.sub(u"시즌","",p.group()).strip()
+        ret['season']=season
+
+    p = re.search('[0-9]+'+u"[회|화|부]",ret['title'])
+    if p:
+        ret['title']=re.sub('[0-9]+'+u"[회|화|부]","", ret['title']).strip()
+        ret['title']=re.sub(r'\(.*?\)',"",ret['title']).strip()
+
+        episode=re.sub(u"[회|화|부]","",p.group()).strip()
+        ret['episode']=episode
+
+        return ret
+
+    ret['episode']=None
+
+    return ret
