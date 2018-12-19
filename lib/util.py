@@ -115,6 +115,12 @@ def GetEpisodeNumFromTitle(title):
     ret['title']=title.replace('&lt;','<').replace('&gt;','>')
     ret['title']=re.sub('<.*?>',"",ret['title']).strip()
 
+    p = re.search("<", ret['title'])
+
+    if p:
+        ret['title']=re.sub('<.*?$','',ret['title']).strip()
+    # ret['title']=ret['title'].replace('<','&lt;').replace('>','&gt;')
+
     ret['season']='0'
     ret['episode']=None
 
