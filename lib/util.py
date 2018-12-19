@@ -112,7 +112,7 @@ def GetEpisodeNumFromTitle(title):
 
     ret={}
 
-    ret['title']=title
+    ret['title']=title.replace('&lt;','<').replace('&gt;','>')
     ret['title']=re.sub('<.*?>',"",ret['title']).strip()
 
     ret['season']='0'
