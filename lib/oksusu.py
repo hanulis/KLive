@@ -237,8 +237,8 @@ class OKSUSU:
                 #	str += '\t\t<icon src="%s" />\n' % tmp_img
 
                     
-                if epg['extr_posterUrl'] != '':
-                    str += '\t\t<icon src="%s" />\n' % epg['extr_posterUrl']
+                # if epg['extr_posterUrl'] != '':
+                #     str += '\t\t<icon src="%s" />\n' % epg['extr_posterUrl']
                 
                 age_str = '%s세 이상 관람가' % epg['ratingCd'] if epg['ratingCd'] != '0' and epg['ratingCd'] != '1' else '전체 관람가'
                 str += '\t\t<rating system="KMRB"><value>%s</value></rating>\n' % age_str
