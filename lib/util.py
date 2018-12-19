@@ -113,16 +113,16 @@ def GetEpisodeNumFromTitle(title):
     ret={}
 
     ret['title']=title
-    ret['title']=re.sub(r'\<.*?\>',"",ret['title']).strip()
+    ret['title']=re.sub('<.*?>',"",ret['title']).strip()
 
     ret['season']='0'
     ret['episode']=None
 
-    p = re.search(u"시즌[0-9]+", ret['title'])
+    p = re.search(u"시즌 ?[0-9]+", ret['title'])
     if p:
-        ret['title']=re.sub(u"시즌[0-9]+","", ret['title']).strip()
+        ret['title']=re.sub(u"시즌 ?[0-9]+","", ret['title']).strip()
 
-        season=re.sub(u"시즌","",p.group()).strip()
+        season=re.sub(u"[시즌|시즌 ]","",p.group()).strip()
         ret['season']=season
 
     p = re.search('[0-9]+'+u"[회|화|부]",ret['title'])
