@@ -135,4 +135,5 @@ def GetEpisodeNumFromTitle(title):
 
         return ret
 
+    ret['title']=re.sub(r'\(.*?\)',"",ret['title']).strip()
     return ret
