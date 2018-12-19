@@ -313,6 +313,17 @@ class POOQ:
 			if long(startTime) >= long(endTime) : continue
 			str += '\t<programme start="%s00 +0900" stop="%s00 +0900" channel="%s">\n' %  (startTime, endTime, original_type_id)
 				#str += '\t\t<title lang="kr"><![CDATA[%s]]></title>\n' % epg['programTitle']
+
+            replacedTitle=GetEpisodeNumFromTitle(epg['programTitle'])
+
+            if replacedTitle['title'] != epg['programTitle']:
+                epg['programTitle']=replacedTitle['title']
+
+            if replacedTitle['episode']:
+                str += '\t\t<episode-num system="onscreen">%s</episode-num>\n' % replacedTitle['episode']
+                str += '\t\t<episode-num system="common">S%sE%s</episode-num>\n' % (replacedTitle['season'], replacedTitle['episode'])
+                str += '\t\t<episode-num system="xmltv_ns">%s.%s.</episode-num>\n' % (replacedTitle['season'], replacedTitle['episode'])
+
 			str += '\t\t<title lang="kr">%s</title>\n' % epg['programTitle'].replace('<',' ').replace('>',' ')
 			str += '\t\t<icon src="http://img.pooq.co.kr/BMS/program_poster/201802/%s_210.jpg" />\n' % epg['programId']
 				
