@@ -232,7 +232,7 @@ class OKSUSU:
                     str += '\t\t<episode-num system="common">S%sE%s</episode-num>\n' % (replacedTitle['season'], replacedTitle['episode'])
                     str += '\t\t<episode-num system="xmltv_ns">%s.%s.</episode-num>\n' % (replacedTitle['season'], replacedTitle['episode'])
 
-                str += '\t\t<title lang="kr"><![CDATA[%s]]></title>\n' % epg['programName'].replace('&lt;','<').replace('&gt;','>')
+                str += '\t\t<title lang="kr">%s</title>\n' % epg['programName'].replace('&lt;',' ').replace('&gt;',' ')
                 #if item['music_yn'] == 'Y' or isShoppingChannel == False:
                 #	str += '\t\t<icon src="%s" />\n' % tmp_img
 
@@ -255,15 +255,15 @@ class OKSUSU:
             
                 if actorName is not None:
                     temp = actorName.split(',')
-                    for actor in temp: str += '\t\t\t<actor><![CDATA[%s]]></actor>\n' % actor.strip().replace('&lt;','<').replace('&gt;','>')
+                    for actor in temp: str += '\t\t\t<actor>%s</actor>\n' % actor.strip().replace('&lt;',' ').replace('&gt;',' ')
                     desc += '출연 : %s\n' % actorName
                 if directorName is not None:
                     temp = directorName.split(',')
-                    for actor in temp: str += '\t\t\t<producer><![CDATA[%s]]></producer>\n' % actor.strip().replace('&lt;','<').replace('&gt;','>')
+                    for actor in temp: str += '\t\t\t<producer>%s</producer>\n' % actor.strip().replace('&lt;',' ').replace('&gt;',' ')
                     desc += '연출 : %s\n' % directorName
                 if actorName is not None or directorName is not None: str += '\t\t</credits>\n'
                 
-                str += '\t\t<desc lang="kr"><![CDATA[%s]]></desc>\n' % desc.strip().replace('&lt;','<').replace('&gt;','>')
+                str += '\t\t<desc lang="kr">%s</desc>\n' % desc.strip().replace('&lt;',' ').replace('&gt;',' ')
                 str += '\t</programme>\n'
             time.sleep(SLEEP_TIME)
             
