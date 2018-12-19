@@ -199,6 +199,7 @@ class OKSUSU:
 			print('OKSUSU %s / %s make EPG' % (count, len(data['channels'])))
 			str += '\t<channel id="OKSUSU|%s" video-src="%slc&type=OKSUSU&id=%s" video-type="HLS2">\n' % (channel['serviceId'], prefix, channel['serviceId'])
 			str += '\t\t<display-name>%s</display-name>\n' % channel_name
+			str += '\t\t<display-name>%s</display-name>\n' % channel_number
 			str += '\t\t<display-number>%s</display-number>\n' % channel_number
 			str += '\t\t<icon src="http://image.oksusu.com:8080/thumbnails/image/0_0_F20/live/logo/387/%s" />\n' % channel['channelImageName']
 			str += '\t</channel>\n'
