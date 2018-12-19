@@ -224,7 +224,7 @@ class OKSUSU:
 
                 replacedTitle=GetEpisodeNumFromTitle(epg['programName'])
 
-                if replacedTitle['episode'] != epg['programName']:
+                if replacedTitle['title'] != epg['programName']:
                     epg['programName']=replacedTitle['title']
 
                 if replacedTitle['episode']:
