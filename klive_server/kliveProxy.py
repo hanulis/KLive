@@ -122,7 +122,7 @@ def server_m3upipe():
 	ret = ''
 	for line in lines:
 		if line.startswith('http'):
-			ret += 'pipe://%s -i %s -c copy -f mpegts pipe:1\n' % ('ffmpeg', line)
+			ret += 'pipe://%s -i %s -c copy -f mpegts pipe:1\n' % ('/snap/bin/ffmpeg', line)
 		else:
 			ret += line + '\n'
 	return ret
